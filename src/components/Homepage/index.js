@@ -17,7 +17,7 @@ export default function Homepage(){
     console.log(movies)
 
     return(
-        <>
+        <main className="homepage">
             <h2>Selecione o filme</h2>
             {!movies
                 ?   <p>Carregando</p>
@@ -27,6 +27,6 @@ export default function Homepage(){
                     </ul>
             }
             
-        </>
+        </main>
     )
 }
