@@ -1,20 +1,19 @@
 import { useEffect, useState } from "react"
 import axios from 'axios';
 import { Link } from "react-router-dom";
+import "./style.css"
 
 export default function Homepage(){
     const [movies, setMovies] = useState(null)
+    console.log(movies)
 
     useEffect(()=>{
         const promess = axios.get("https://mock-api.driven.com.br/api/v4/cineflex/movies");
 
 		promess.then(answer => {
 			setMovies(answer.data);
-            console.log(answer.data)
 		});
     }, [])
-
-    console.log(movies)
 
     return(
         <main className="homepage">
@@ -23,7 +22,7 @@ export default function Homepage(){
                 ?   <p>Carregando</p>
                 :
                     <ul>
-                        {movies.map(movie => <Link to="sessoes/1" key={movie.title}><li><img src={movie.posterURL} alt={movie.title}/></li></Link>)}
+                        {movies.map(movie => <Link to={`sessoes/${movie.id}`} key={movie.title}><li><img src={movie.posterURL} alt={movie.title}/></li></Link>)}
                     </ul>
             }
             

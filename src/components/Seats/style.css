@@ -1,0 +1,105 @@
+.seats h2{
+    margin-bottom: 29px;
+    
+    letter-spacing: 0.04em;
+}
+.seats-map{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 7px;
+    row-gap: 18px;
+
+    margin-bottom: 16px;
+}
+.seats-map li{
+    width: 26px;
+    height: 26px;
+
+    border-radius: 13px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 11px;
+    line-height: 13px;
+    letter-spacing: 0.04em;
+}
+.subtitles{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    margin-bottom: 40px;
+}
+.subtitles div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    font-size: 13px;
+    line-height: 15px;
+    color: #4E5A65;
+}
+.subtitles div div{
+    width: 26px;
+    height: 26px;
+
+    border: 1px solid;
+    border-radius: 17px;
+}
+.selected,
+.subtitles .selected{
+    background: #8DD7CF;
+    border: 1px solid #1AAE9E;
+}
+.available,
+.subtitles .available{
+    background: #C3CFD9;;
+    border: 1px solid #808F9D;
+}
+.unavailable,
+.subtitles .unavailable{
+    background: #FBE192;
+    border: 1px solid #F7C52B;
+}
+.buyers{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.buyers li{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+
+    font-size: 18px;
+    line-height: 21px;
+    color: #293845;
+}
+.buyers input{
+    height: 51px;
+    width: 327px;
+    margin-bottom: 7px;
+    padding-left: 18px;
+
+    background: #FFFFFF;
+    border: 1px solid #D5D5D5;
+    border-radius: 3px;
+}
+.buyers input::placeholder{
+    font-size: 18px;
+    line-height: 21px;
+    font-style: italic;
+    
+
+    color: #AFAFAF;
+}
+.seats button{
+    margin: 50px 0 30px;
+    height: 52px;
+    width: 225px;
+}
