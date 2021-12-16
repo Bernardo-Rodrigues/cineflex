@@ -3,10 +3,8 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import "./style.css"
 
-export default function Homepage(){
+export default function Homepage({setMovie}){
     const [movies, setMovies] = useState(null)
-    console.log(movies)
-
     useEffect(()=>{
         const promess = axios.get("https://mock-api.driven.com.br/api/v4/cineflex/movies");
 
@@ -22,7 +20,7 @@ export default function Homepage(){
                 ?   <p>Carregando</p>
                 :
                     <ul>
-                        {movies.map(movie => <Link to={`sessoes/${movie.id}`} key={movie.title}><li><img src={movie.posterURL} alt={movie.title}/></li></Link>)}
+                        {movies.map(movie => <Link to={`sessoes/${movie.id}`} key={movie.title}><li onClick={()=>setMovie(movie.title)}><img src={movie.posterURL} alt={movie.title}/></li></Link>)}
                     </ul>
             }
             

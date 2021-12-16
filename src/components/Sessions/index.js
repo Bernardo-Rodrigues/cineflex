@@ -4,11 +4,9 @@ import { Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import "./style.css"
 
-export default function Sessions(){
+export default function Sessions({setSessionDate}){
     const [sessions, setSessions] = useState(null)
     const { movieId } = useParams();
-    console.log(movieId)
-    console.log(sessions)
 
     useEffect(()=>{
         const promess = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/movies/${movieId}/showtimes`);
@@ -30,7 +28,7 @@ export default function Sessions(){
                                 <p>{session.weekday} - {session.date}</p>
                                 <div>
                                     {session.showtimes.map(showtime =>
-                                        <Link to={`/assentos/:${showtime.id}`} key={showtime.id}><button>{showtime.name}</button></Link>  
+                                        <Link to={`/assentos/:${showtime.id}`} key={showtime.id}><button onClick={()=>setSessionDate(`${session.date} ${showtime.name}`)}>{showtime.name}</button></Link>  
                                     )}
                                 </div>
                             </li>

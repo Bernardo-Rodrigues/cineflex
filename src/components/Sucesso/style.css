@@ -20,7 +20,7 @@
     color: #293845;
 
     padding-left: 30px;
-    margin: 40px 0 5px;
+    margin: 40px 0 10px;
 }
 .sucess p{
     font-size: 22px;
@@ -29,6 +29,7 @@
     color: #293845;
 
     padding-left: 30px;
+    margin-top: 5px;
 }
 .sucess button{
     margin: 70px 0 30px;

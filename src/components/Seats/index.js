@@ -6,17 +6,20 @@ import { useParams } from 'react-router-dom';
 import "./style.css"
 
 
-export default function Seats(){
+export default function Seats({setPurchasedSeats, setBuyer}){
     const [seats, setSeats] = useState(null)
     const [selectedSeats, setSelectedSeats] = useState([])
     const [buyerName, setBuyerName] = useState("")
     const [buyerCPF, setBuyerCPF] = useState("")
     const { sessionId } = useParams();
-    console.log(selectedSeats)
+    const sessionIdNumber = parseInt(sessionId.slice(1))
     
     function send(){
         const promess = axios.post("https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many", {ids:selectedSeats,name:buyerName,cpf:buyerCPF})
-        promess.then(answer=>console.log(answer), answer=>console.log(answer.response))
+        promess.then(()=>{
+            setBuyer([{name:buyerName,cpf:buyerCPF}])
+            setPurchasedSeats(selectedSeats.map( seat => `Assento ${seat - 50 * (sessionIdNumber - 1)}`))
+        })
     }
 
     function seatClick(id){
@@ -25,7 +28,7 @@ export default function Seats(){
     }
 
     useEffect(()=>{
-        const promess = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sessionId.slice(1)}/seats`);
+        const promess = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sessionIdNumber}/seats`);
 
 		promess.then(answer => {
 			setSeats(answer.data.seats);
