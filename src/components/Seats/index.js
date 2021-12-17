@@ -5,12 +5,14 @@ import Subtitles from "./Subtitles";
 import SeatsMap from "./SeatsMap";
 import Buyers from "./Buyers";
 import { LocalStyle } from "./style";
+import Footer from "../Footer";
 
 export default function Seats({setPurchasedSeats, setBuyer}){
     const [seats, setSeats] = useState(null)
     const [selectedSeats, setSelectedSeats] = useState([])
     const [buyerName, setBuyerName] = useState("")
     const [buyerCPF, setBuyerCPF] = useState("")
+    const [movie, SetMovie] = useState(null)
     const { sessionId } = useParams();
     const sessionIdNumber = parseInt(sessionId.slice(1))
 
@@ -19,8 +21,9 @@ export default function Seats({setPurchasedSeats, setBuyer}){
 
 		promess.then(answer => {
 			setSeats(answer.data.seats);
+            SetMovie({ img:answer.data.movie.posterURL, title:answer.data.movie.title, weekday:answer.data.day.weekday, hour: answer.data.name})
 		});
-    }, [sessionId])
+    }, [sessionIdNumber])
     
     function send(){
         const promess = axios.post("https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many", {ids:selectedSeats,name:buyerName,cpf:buyerCPF})
@@ -46,6 +49,7 @@ export default function Seats({setPurchasedSeats, setBuyer}){
 
             <Link to="/sucesso"><button onClick={send}>Reservar assento(s)</button></Link>
             
+            {movie && <Footer movie={movie}/>}
         </>
     )
 }

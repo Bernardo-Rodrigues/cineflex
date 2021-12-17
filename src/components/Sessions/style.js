@@ -1,6 +1,9 @@
 import styled, { createGlobalStyle } from "styled-components";
 
 export const LocalStyle = createGlobalStyle`
+    body{
+        padding-bottom: 117px;
+    }
     a{
         display: inline-flex;
     }

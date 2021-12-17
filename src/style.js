@@ -5,6 +5,7 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
 
     width: 375px;
+    padding-top: 67px;
 
     margin: auto;
   }
@@ -34,9 +35,11 @@ export const GlobalStyle = createGlobalStyle`
   }
 `
 export const Header = styled.header`
-    background-color: #C3CFD9;
-
+    position:fixed;
+    top:0;
+    width:100%;
     height: 67px;
+    background-color: #C3CFD9;
 
     color: #E8833A;
     font-size: 34px;

@@ -9,7 +9,6 @@ import Sucess from "./components/Sucesso";
 export default function App(){
     const [movie, setMovie]  = useState(null)
     const [sessionDate, setSessionDate] = useState(null)
-    const [sessionDay, setSessionDay] = useState("c")
     const [purchasedSeats, setPurchasedSeats] = useState(null)
     const [buyer, setBuyer] = useState(null)
     let obj={
