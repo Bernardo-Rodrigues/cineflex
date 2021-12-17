@@ -1,18 +1,20 @@
+import { Subtitle, Circle, SubtitlesUl } from "./style"
+
 export default function Subtitles(){
     return(
-        <div className="subtitles">
-            <div>
-                <div className="selected"></div>
+        <SubtitlesUl>
+            <Subtitle>
+                <Circle type="selected"></Circle>
                 <p>Selecionado</p>
-            </div>
-            <div>
-                <div className="available"></div>
+            </Subtitle>
+            <Subtitle>
+                <Circle type="available"></Circle>
                 <p>Disponível</p>
-            </div>
-            <div>
-                <div className="unavailable"></div>
+            </Subtitle>
+            <Subtitle>
+                <Circle type="unavailable"></Circle>
                 <p>Indisponível</p>
-            </div>
-        </div>
+            </Subtitle>
+        </SubtitlesUl>
     )
 }

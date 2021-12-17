@@ -1,23 +1,24 @@
-import "./style.css"
 import { Link } from "react-router-dom"
+import { Title, Subheading, Info, LocalStyle } from "./style"
 
 export default function Sucess({data : { buyer, movie, purchasedSeats, sessionDate}}){
     return(
         <>
         {purchasedSeats
             ?
-                <div className="sucess">
-                    <h1>Pedido feito<br/> com sucesso!</h1>
-                    <h3>Filme e sessão</h3>
-                    <p>{movie}</p>
-                    <p>{sessionDate}</p>
-                    <h3>Ingressos</h3>
-                    {purchasedSeats.map( (seat, index) => <p key={index}>{seat}</p>)}
-                    <h3>Comprador</h3>
-                    <p>Nome: {buyer[0].name}</p>
-                    <p>CPF: {buyer[0].cpf}</p>
+                <>
+                    <LocalStyle/>
+                    <Title>Pedido feito<br/> com sucesso!</Title>
+                    <Subheading>Filme e sessão</Subheading>
+                    <Info>{movie}</Info>
+                    <Info>{sessionDate}</Info>
+                    <Subheading>Ingressos</Subheading>
+                    {purchasedSeats.map( (seat, index) => <Info key={index}>{seat}</Info>)}
+                    <Subheading>Comprador</Subheading>
+                    <Info>Nome: {buyer[0].name}</Info>
+                    <Info>CPF: {buyer[0].cpf}</Info>
                     <Link to="/"><button>Voltar para a Home</button></Link>
-                </div>
+                </>
             :   <p>carregando</p>
         }
         

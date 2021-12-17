@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react"
+import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
-import { Link } from "react-router-dom";
 import Subtitles from "./Subtitles";
-import { useParams } from 'react-router-dom';
-import "./style.css"
-
+import SeatsMap from "./SeatsMap";
+import Buyers from "./Buyers";
+import { LocalStyle } from "./style";
 
 export default function Seats({setPurchasedSeats, setBuyer}){
     const [seats, setSeats] = useState(null)
@@ -13,6 +13,14 @@ export default function Seats({setPurchasedSeats, setBuyer}){
     const [buyerCPF, setBuyerCPF] = useState("")
     const { sessionId } = useParams();
     const sessionIdNumber = parseInt(sessionId.slice(1))
+
+    useEffect(()=>{
+        const promess = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sessionIdNumber}/seats`);
+
+		promess.then(answer => {
+			setSeats(answer.data.seats);
+		});
+    }, [sessionId])
     
     function send(){
         const promess = axios.post("https://mock-api.driven.com.br/api/v4/cineflex/seats/book-many", {ids:selectedSeats,name:buyerName,cpf:buyerCPF})
@@ -22,50 +30,22 @@ export default function Seats({setPurchasedSeats, setBuyer}){
         })
     }
 
-    function seatClick(id){
-        if(selectedSeats.includes(id)) setSelectedSeats(selectedSeats.filter(element => element !== id))
-        else setSelectedSeats([...selectedSeats, id])
-    }
-
-    useEffect(()=>{
-        const promess = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sessionIdNumber}/seats`);
-
-		promess.then(answer => {
-			setSeats(answer.data.seats);
-		});
-    }, [sessionId])
-
     return(
-        <main className="seats">
+        <>
+            <LocalStyle/>
+
             <h2>Selecione o(s) assento(s)</h2>
             {!seats
                 ?   <p>Carregando</p>
-                :
-                    <ul className="seats-map">
-                        {seats.map( ({name, id, isAvailable}) => 
-                            <li 
-                                key={id} 
-                                className={!isAvailable? "unavailable" : selectedSeats.find(element => element === id) ? "selected" : "available"}
-                                onClick={() => seatClick(id)}
-                            >
-                                {name.length < 2 ? `0${name}` : name}
-                            </li>
-                        )}
-                    </ul>
+                :   <SeatsMap seats={seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/> 
             }
+
             <Subtitles/>
             
-            <ul className="buyers">
-                <li>
-                    <h3>Nome do comprador:</h3>
-                    <input type="text" placeholder="Digite seu nome..." onChange={e => setBuyerName(e.target.value)}></input>
-                    <h3>CPF do comprador:</h3>
-                    <input type="text" placeholder="Digite seu CPF..." onChange={e => setBuyerCPF(e.target.value)}></input>
-                </li>
-            </ul>
+            <Buyers setBuyerName={setBuyerName} setBuyerCPF={setBuyerCPF}/>
 
             <Link to="/sucesso"><button onClick={send}>Reservar assento(s)</button></Link>
             
-        </main>
+        </>
     )
 }

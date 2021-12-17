@@ -1,6 +1,4 @@
-import "./assets/css/reset.css"
-import "./assets/css/style.css"
-
+import "./css/reset.css"
 import ReactDOM from "react-dom"
 import App from "./App"
 
