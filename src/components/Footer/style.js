@@ -10,7 +10,7 @@ export const LocalStyle = createGlobalStyle`
 export const Movie = styled.footer`
     position:fixed;
     bottom:0;
-    width:100%;
+    width:375px;
     height:117px;
     
     background: #DFE6ED;

@@ -8,14 +8,14 @@ import { LocalStyle } from "./style";
 import Footer from "../Footer";
 
 export default function Seats({setPurchasedSeats, setBuyer}){
+    const { sessionId } = useParams();
+    const sessionIdNumber = parseInt(sessionId.slice(1))
+    const [movie, SetMovie] = useState(null)
     const [seats, setSeats] = useState(null)
     const [selectedSeats, setSelectedSeats] = useState([])
     const [buyerName, setBuyerName] = useState("")
     const [buyerCPF, setBuyerCPF] = useState("")
-    const [movie, SetMovie] = useState(null)
-    const { sessionId } = useParams();
-    const sessionIdNumber = parseInt(sessionId.slice(1))
-
+    
     useEffect(()=>{
         const promess = axios.get(`https://mock-api.driven.com.br/api/v4/cineflex/showtimes/${sessionIdNumber}/seats`);
 

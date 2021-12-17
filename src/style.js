@@ -34,18 +34,3 @@ export const GlobalStyle = createGlobalStyle`
     color: #293845;
   }
 `
-export const Header = styled.header`
-    position:fixed;
-    top:0;
-    width:100%;
-    height: 67px;
-    background-color: #C3CFD9;
-
-    color: #E8833A;
-    font-size: 34px;
-    line-height: 40px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`
