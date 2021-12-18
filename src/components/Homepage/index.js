@@ -11,6 +11,7 @@ export default function Homepage({setMovie}){
 		promess.then(answer => {
 			setMovies(answer.data);
 		});
+        //eslint-disable-next-line
     }, [])
 
     return(
