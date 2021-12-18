@@ -6,7 +6,7 @@ export default function Header(){
     const navigate = useNavigate();
     return(
         <HeaderElement>
-            {pathname !== "/" && <img src="https://www.gundemcanta.com/assets/site/img/icons/geri-don.png" onClick={() => navigate(-1)}/>}
+            {pathname !== "/" && <img src="https://www.gundemcanta.com/assets/site/img/icons/geri-don.png" alt="goback" onClick={() => navigate(-1)}/>}
             CINEFLEX
         </HeaderElement>  
     )
