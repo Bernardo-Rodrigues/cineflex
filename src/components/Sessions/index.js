@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import axios from 'axios';
 import SessionsMap from "./SessionsMap";
 import Footer from "../Footer";
+import { Loading, Loader } from "../../style"
 
 export default function Sessions({setSessionDate}){
     const [sessions, setSessions] = useState(null)
@@ -18,17 +19,13 @@ export default function Sessions({setSessionDate}){
 		});
     }, [movieId])
     
-
+    if(!sessions) return <Loading><Loader/></Loading>
     return(
         <>
             <h2>Selecione o horário</h2>
-            {!sessions
-                ?   <p>Carregando</p>
-                :   <>
-                        <SessionsMap sessions={sessions} setSessionDate={setSessionDate}/>   
-                        <Footer movie={movie}/> 
-                    </>
-            }
+            
+            <SessionsMap sessions={sessions} setSessionDate={setSessionDate}/>   
+            <Footer movie={movie}/> 
         </>
     )
     

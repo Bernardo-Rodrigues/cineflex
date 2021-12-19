@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -32,5 +32,28 @@ export const GlobalStyle = createGlobalStyle`
     align-items: center;
 
     color: #293845;
+  }
+`
+export const Loading = styled.div`
+  display:flex;
+  justify-content:center;
+  align-items:center;
+
+  margin-top:200px;
+`
+export const Loader = styled.div`
+  height: 50px;
+  width: 50px;
+
+  border: 6px solid #e5e5e5;
+  border-radius: 50%;
+  border-top-color: #E8833A;
+
+  
+  animation: is-rotating 1s infinite;
+  @keyframes is-rotating {
+    to {
+      transform: rotate(1turn);
+    }
   }
 `

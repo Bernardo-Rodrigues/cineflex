@@ -3,6 +3,7 @@ import styled from "styled-components"
 export const HeaderElement = styled.header`
     position:fixed;
     top:0;
+    z-index:1;
     width:375px;
     height: 67px;
     background-color: #C3CFD9;

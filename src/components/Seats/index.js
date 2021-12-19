@@ -6,6 +6,7 @@ import SeatsMap from "./SeatsMap";
 import Buyers from "./Buyers";
 import { LocalStyle } from "./style";
 import Footer from "../Footer";
+import { Loading, Loader } from "../../style"
 
 export default function Seats({setPurchasedSeats, setBuyer}){
     const { sessionId } = useParams();
@@ -33,15 +34,15 @@ export default function Seats({setPurchasedSeats, setBuyer}){
         })
     }
 
+    if(!seats) return <Loading><Loader/></Loading> 
+
     return(
         <>
             <LocalStyle/>
 
             <h2>Selecione o(s) assento(s)</h2>
-            {!seats
-                ?   <p>Carregando</p>
-                :   <SeatsMap seats={seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/> 
-            }
+            
+            <SeatsMap seats={seats} selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats}/> 
 
             <Subtitles/>
             
