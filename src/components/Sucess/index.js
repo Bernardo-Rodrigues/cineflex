@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom"
 import { Title, Subheading, Info, LocalStyle } from "./style"
 import { Loading, Loader } from "../../style"
+import Ticket from "./Ticket"
+import Tickets from "./Tickets"
 
-export default function Sucess({data : { buyer, movie, purchasedSeats, sessionDate}}){
+export default function Sucess({data : { movie, sessionDate, selectedSeats, buyers }, setSelectedSeats, setBuyers}){
 
-    if(!purchasedSeats) return <Loading><Loader/></Loading> 
+    if(!selectedSeats) return <Loading><Loader/></Loading> 
     return(
         <>
         <LocalStyle/>
@@ -15,14 +17,12 @@ export default function Sucess({data : { buyer, movie, purchasedSeats, sessionDa
         <Info>{movie}</Info>
         <Info>{sessionDate}</Info>
 
-        <Subheading>Ingressos</Subheading>
-        {purchasedSeats.map( (seat, index) => <Info key={index}>{seat}</Info>)}
-
-        <Subheading>Comprador</Subheading>
-        <Info>Nome: {buyer[0].name}</Info>
-        <Info>CPF: {buyer[0].cpf}</Info>
+        {buyers.length > 1
+            ?   <Tickets selectedSeats={selectedSeats} buyers={buyers}/>
+            :   <Ticket selectedSeats={selectedSeats} buyers={buyers}/>
+        }
         
-        <Link to="/"><button>Voltar para a Home</button></Link>
+        <Link to="/"><button onClick={()=>  { setSelectedSeats([]); setBuyers([]) }}>Voltar para a Home</button></Link>
 
         </>    
     )

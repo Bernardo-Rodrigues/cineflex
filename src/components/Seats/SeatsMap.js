@@ -1,9 +1,22 @@
 import { Circle, SeatsUl, Seat } from "./style"
 
-export default function SeatsMap( {seats, selectedSeats, setSelectedSeats}){
+export default function SeatsMap( {seats, selectedSeats, setSelectedSeats, buyers, setBuyers}){
     function seatClick(id){
-        if(selectedSeats.includes(id)) setSelectedSeats(selectedSeats.filter(element => element !== id))
-        else setSelectedSeats([...selectedSeats, id])
+        if(selectedSeats.includes(id)){
+            let buyer = buyers.find(element => element.idAssento === id)
+            let answer = true
+
+            if(buyer.nome || buyer.cpf) answer = window.confirm("Excluir campo preenchido?")
+
+            if(answer){
+                setSelectedSeats(selectedSeats.filter(element => element !== id))
+                setBuyers(buyers.filter( element => element.idAssento !== id))
+            }
+        }
+        else {
+            setSelectedSeats([...selectedSeats, id])
+            setBuyers([...buyers, {idAssento:id, nome:"", cpf:""}])
+        }
     }
 
     return(

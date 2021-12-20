@@ -10,13 +10,13 @@ import Header from "./components/Header";
 export default function App(){
     const [movie, setMovie]  = useState(null)
     const [sessionDate, setSessionDate] = useState(null)
-    const [purchasedSeats, setPurchasedSeats] = useState(null)
-    const [buyer, setBuyer] = useState(null)
+    const [selectedSeats, setSelectedSeats] = useState([])
+    const [buyers, setBuyers] = useState([])
     let obj={
         movie,
         sessionDate,
-        purchasedSeats,
-        buyer
+        selectedSeats,
+        buyers
     }
 
     return(
@@ -26,8 +26,8 @@ export default function App(){
                 <Routes>
                     <Route path="/" element={<Homepage setMovie={setMovie}/>}></Route>
                     <Route path="/sessoes/:movieId" element={<Sessions setSessionDate={setSessionDate}/>}></Route>
-                    <Route path="/assentos/:sessionId" element={<Seats setPurchasedSeats={setPurchasedSeats} setBuyer={setBuyer}/>}></Route>
-                    <Route path="/sucesso" element={<Sucess data={obj}/>}></Route>
+                    <Route path="/assentos/:sessionId" element={<Seats selectedSeats={selectedSeats} setSelectedSeats={setSelectedSeats} buyers={buyers} setBuyers={setBuyers}/>}></Route>
+                    <Route path="/sucesso" element={<Sucess data={obj} setSelectedSeats={setSelectedSeats} setBuyers={setBuyers}/>}></Route>
                 </Routes>
             </BrowserRouter>
         

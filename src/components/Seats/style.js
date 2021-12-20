@@ -60,10 +60,14 @@ export const Circle = styled.div`
     background: ${ ({type}) => type === "unavailable" ? "#FBE192" : type === "selected" ? "#8DD7CF" : "#C3CFD9"};
     border: ${ ({type}) => type === "unavailable" ? "1px solid #F7C52B" : type === "selected" ? "1px solid #1AAE9E" : "1px solid #808F9D;"};
 `
+export const P = styled.p`
+    text-align:center;
+`
 export const BuyersUl = styled.ul`
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 50px;
 `
 export const Buyer = styled.li`
     display: flex;
