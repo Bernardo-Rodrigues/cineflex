@@ -2,6 +2,10 @@
 
 Application that allows you to choose a movie from a list, select a session on a certain day and time and reserve as many seats as you want, if they are available. In addition to showing the confirmation of the reservation after this process.
 
+<div align='center'>
+  <img style='ustify-content: center' src='/src/assets/gif/Cineflex.gif' />
+</div>
+
 Try it out now at https://cineflex-9glvwmerq-bernardo-rodrigues.vercel.app
 
 ## About
