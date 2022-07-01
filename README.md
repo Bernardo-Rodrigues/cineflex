@@ -1,31 +1,31 @@
 # Cineflex
 
-Application that allows you to choose a movie from a list, select a session on a certain day and time and reserve as many seats as you want, if they are available. In addition to showing the confirmation of the reservation after this process.
+Aplicativo que permite escolher um filme de uma lista, selecionar uma sessão em determinado dia e horário e reservar quantos assentos quiser, caso haja disponibilidade. Além de mostrar a confirmação da reserva após este processo.
 
 <div align='center'>
   <img style='ustify-content: center' src='/src/assets/gif/Cineflex.gif' />
 </div>
 
-Try it out now at https://cineflex-9glvwmerq-bernardo-rodrigues.vercel.app
+Experimente agora em https://cineflex-9glvwmerq-bernardo-rodrigues.vercel.app
 
-## About
+## Sobre
 
-The main features of this application are:
+As principais funcionalidades deste aplicativo são:
 
-- Show a movie catalog with their respective overview
-- Choose one of the listed movies
-- Choose one of the available movie sessions
-- Select the desired seats that are available
-- Inform the details of each of the seat buyers
-- See the complete booking with all the details
+- Mostrar um catálogo de filmes com sua respectiva visão geral
+- Escolha um dos filmes listados
+- Escolha uma das sessões de filmes disponíveis
+- Selecione os assentos desejados que estão disponíveis
+- Informar os detalhes de cada um dos compradores de assentos
+- Veja a reserva completa com todos os detalhes
 
-## Why?
+## Por quê?
 
-This application was created to apply the knowledge of a new technology, the react router, wich is a standard library for routing in React. It enables the navigation among views of various components in a React Application, allows changing the browser URL, and keeps the UI in sync with the URL.
+Essa aplicação foi criada para aplicar o conhecimento de uma nova tecnologia, o react-router, que é uma biblioteca padrão para rotas em React. Ele permite a navegação entre visualizações de vários componentes em uma React Application, permite alterar a URL do navegador e mantém a UI sincronizada com a URL.
 
-## Technologies
+## Tecnologias
 
-The following tools and frameworks were used in the construction of the project:<br>
+As seguintes ferramentas e frameworks foram usados na construção do projeto:<br>
 
 
   ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -36,22 +36,18 @@ The following tools and frameworks were used in the construction of the project:
   ![Styled Components](https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white)
 
 
-## How to run
+## Como rodar
 
-1. Clone this repository
+1. Clone o repositório
 
-2. Install dependencies
+2. Instale as dependências
 ```bash
 npm i
 ```
 
-3. Run the application with
+3. Rode a aplicação com
 ```bash
 npm start
 ```
 
-4. You can optionally build the project running
-```bash
-npm run build
-```
-5. Finally, access http://localhost:3000 on your favorite browser
+4. Por fim, acesse http://localhost:3000 no seu navegador preferido
